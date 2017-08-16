@@ -9,6 +9,9 @@
 
 var Alexa = require('alexa-sdk');
 
+
+// var APP_ID = "amzn1.ask.skill.510df7ad-6b12-45e1-8ee5-394a7f52fb48";
+
 var states = {
     STARTMODE: '_STARTMODE',                // Prompt the user to start or restart the game.
     ASKMODE: '_ASKMODE',                    // Alexa is asking user the questions.
@@ -17,23 +20,31 @@ var states = {
 
 
 // Questions
-var nodes = [{ "node": 1, "message": "Do you like working with people", "yes": 2, "no": 3 },
-             { "node": 2, "message": "Do you like caring for others", "yes": 4, "no": 5 },
-             { "node": 3, "message": "Would you like to work during the day", "yes": 6, "no": 7 },
-             { "node": 4, "message": "Can you stand the sight of blood", "yes": 8, "no": 9 },
-             { "node": 5, "message": "Is money the most important thing in your life", "yes": 10, "no": 11 },
-             { "node": 6, "message": "Do you want to work with animals", "yes": 12, "no": 13 },
-             { "node": 7, "message": "Are you active", "yes": 14, "no": 15 },
+
+var nodes = [{ "node": 1, "message": "Do you want to worship", "yes": 3, "no": 2 },
+             { "node": 2, "message": "Are you reach and insane", "yes": 15, "no": 16 },
+             { "node": 3, "message": "Do you want to worship to more than one god", "yes": 4, "no": 7 },
+             { "node": 4, "message": "Do you want to be reincarnated", "yes": 5, "no": 25 },
+             { "node": 5, "message": "Do you have a black cat", "yes": 17, "no": 6 },
+             { "node": 6, "message": "Do you like indian take away", "yes": 18, "no": 19 },
+             { "node": 7, "message": "Can you survive without bacon", "yes": 8, "no": 9 },
+             { "node": 8, "message": "Do you like hummus", "yes": 20, "no": 21 },
+             { "node": 9, "message": "Are you naturally annoying person", "yes": 10, "no": 22 },
+             { "node": 10, "message": "Do you think underwear can be Magical", "yes": 23, "no": 24 },
 
 // Answers & descriptions
-             { "node": 8, "message": "Doctor", "yes": 0, "no": 0, "description": "A physician or medical doctor is a professional who practices medicine." },
-             { "node": 9, "message": "Teacher", "yes": 0, "no": 0, "description": "In education, teachers facilitate student learning, often in a school or academy or perhaps in another environment such as outdoors."},
-             { "node": 10, "message": "Sales person", "yes": 0, "no": 0 , "description": "A salesman is someone who works in sales, with the main function of selling products or services to others."},
-             { "node": 11, "message": "Artist", "yes": 0, "no": 0 , "description": "An artist is a person engaged in one or more of any of a broad spectrum of activities related to creating art, practicing the arts, and, or demonstrating an art."},
-             { "node": 12, "message": "Zookeeper", "yes": 0, "no": 0 , "description": "A zookeeper is a person who manages zoo animals that are kept in captivity for conservation or to be displayed to the public, and are usually responsible for the feeding and daily care of the animals."},
-             { "node": 13, "message": "Software engineer", "yes": 0, "no": 0 , "description": "A software engineer is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of the software and systems that make computers or anything containing software work."},
-             { "node": 14, "message": "Security Guard", "yes": 0, "no": 0 , "description": "A security guard is a private person who is paid to protect an organization's assets from various hazards such as criminal activity, by utilizing preventative measures. "},
-             { "node": 15, "message": "Lighthouse keeper", "yes": 0, "no": 0 , "description": "A lighthouse keeper is the person responsible for tending and caring for a lighthouse, particularly the light and lens in the days when oil lamps and clockwork mechanisms were used."},
+             { "node": 15, "message": "be a Scientologiest", "yes": 0, "no": 0, "description": "According to Scientology, its beliefs and practices are based on rigorous research, and its doctrines are accorded a significance equivalent to scientific laws." },
+             { "node": 16, "message": "be an Atheist", "yes": 0, "no": 0, "description": "Atheism is specifically the position that there are no deities."},
+             { "node": 17, "message": "a Wiccan", "yes": 0, "no": 0 , "description": "Wicca is a contemporary Pagan new religious movement. Wicca draws upon a diverse set of ancient pagan and 20th century hermetic motifs for its theological structure and ritual practices."},
+             { "node": 18, "message": "be a Hindu", "yes": 0, "no": 0 , "description": "Hinduism is a religion, or a way of life, widely practiced in the Indian subcontinent. Hinduism has been called the oldest religion in the world."},
+             { "node": 19, "message": "be Buddhist", "yes": 0, "no": 0 , "description": "The basis of Buddhism is a doctrine known as the Four Noble Truths. The First Truth is that all life is suffering, pain, and misery."},
+             { "node": 20, "message": "be Muslim", "yes": 0, "no": 0 , "description": "Islam  is a religion that believes in one god. All of its teachings and beliefs are written out in the Quran (also spelled Quran or Koran). People who follow Islam are called Muslims."},
+             { "node": 21, "message": "be Jewish", "yes": 0, "no": 0 , "description": "Judaism is the world's oldest Abrahamic religion. There are about 15 million followers who are called Jews."},
+             { "node": 22, "message": "be a boring general Christian then", "yes": 0, "no": 0 , "description": "Christianity is one of the most popular religions through the western world. It is an Abrahamic religion. Members of the religion are called Christians. It is a monotheistic religion, meaning it has only one God."},
+             { "node": 23, "message": "be a Mormon", "yes": 0, "no": 0 , "description": "Mormonism is a religious movement that was founded by Joseph Smith in 1830. The people that belong to this religion are called Latter-day Saints, or Mormons. Their teachings are similar to many Christian churches, and they consider themselves to be Christian."},
+             { "node": 24, "message": "be a Jehovah’s Witness", "yes": 0, "no": 0 , "description": "Jehovah's Witnesses is a millenarian restorationist Christian denomination with nontrinitarian beliefs distinct from mainstream Christianity. The group reports a worldwide membership of more than 8.3 million adherents involved in evangelism and an annual Memorial attendance of more than 20 million."},
+             { "node": 25, "message": "following the Mayan religion", "yes": 0, "no": 0 , "description": "The Mayans religion involved several aspects of nature, astronomy and rituals. Most Gods represented a form in nature, for example, Sun God, Kinih Ahous, or Maize God, Yum Kaax. The Mayans were known for their calenders and astronomical buildings. These were used during their religious rituals."},
+
 ];
 
 // this is used for keep track of visted nodes when we test for loops in the tree
@@ -54,10 +65,10 @@ var promptToStartMessage = "Say yes to continue, or no to end the game.";
 var promptToSayYesNo = "Say yes or no to answer the question.";
 
 // This is the response to the user after the final question when Alex decides on what group choice the user should be given
-var decisionMessage = "I think you would make a good";
+var decisionMessage = "I think you should";
 
 // This is the prompt to ask the user if they would like to hear a short description of thier chosen profession or to play again
-var playAgainMessage = "Say 'tell me more' to hear a short description for this profession, or do you want to play again?";
+var playAgainMessage = "Say 'tell me more' to hear a short description for this religion, or do you want to play again?";
 
 // this is the help message during the setup at the beginning of the game
 var helpMessage = "I will ask you some questions that will identify what you would be best at. Want to start now?";
@@ -85,6 +96,7 @@ var START_NODE = 1;
 // Called when the session starts.
 exports.handler = function (event, context, callback) {
     var alexa = Alexa.handler(event, context);
+    // alexa.APP_ID = APP_ID;
     alexa.registerHandlers(newSessionHandler, startGameHandlers, askQuestionHandlers, descriptionHandlers);
     alexa.execute();
 };

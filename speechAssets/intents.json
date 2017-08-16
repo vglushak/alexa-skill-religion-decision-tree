@@ -1,28 +1,91 @@
 {
-	"intents": [{
-      "intent": "AMAZON.YesIntent",
-      "slots": []
-    }, {
-      "intent": "AMAZON.NoIntent",
-      "slots": []
-    }, {
-		"intent": "AMAZON.HelpIntent",
-		"slots": []
-	}, {
-		"intent": "AMAZON.StopIntent",
-		"slots": []
-	}, {
-		"intent": "AMAZON.CancelIntent",
-		"slots": []
-	},{
-		"intent": "AMAZON.StartOverIntent",
-		"slots": []
-	}, {
-		"intent": "DescriptionIntent",
-		 "slots": [
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": [
+        "cancel"
+      ]
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": [
+        "help"
+      ]
+    },
+    {
+      "name": "AMAZON.NoIntent",
+      "samples": [
+        "no",
+        "false"
+      ]
+    },
+    {
+      "name": "AMAZON.StartOverIntent",
+      "samples": [
+        "start over",
+        "restart",
+        "start again"
+      ]
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": [
+        "stop",
+        "off",
+        "shut up"
+      ]
+    },
+    {
+      "name": "AMAZON.YesIntent",
+      "samples": [
+        "yes",
+        "true",
+        "okay"
+      ]
+    },
+    {
+      "name": "DescriptionIntent",
+      "samples": [
+        "{Description} please",
+        "please {Description}",
+        "can you {Description}",
+        "can you {Description} please"
+      ],
+      "slots": [
         {
           "name": "Description",
-          "type": "descriptionType"
-        }]
-	}]
+          "type": "Description",
+          "samples": []
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "Description",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "tell me more",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "describe it",
+            "synonyms": []
+          }
+        },
+        {
+          "id": "",
+          "name": {
+            "value": "describe",
+            "synonyms": []
+          }
+        }
+      ]
+    }
+  ]
 }
